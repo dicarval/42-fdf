@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:27:31 by dicarval          #+#    #+#             */
-/*   Updated: 2024/07/29 18:45:44 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/07/31 14:51:23 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	main(void)
 	t_data	img;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	mlx_win = mlx_new_window(mlx, 1230, 780, "Hello world!");
+	img.img = mlx_new_image(mlx, 1230, 780);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	my_mlx_pixel_put(&img, 25 , 25 , 0x00FF0000);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
