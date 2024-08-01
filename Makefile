@@ -1,7 +1,7 @@
 
 NAME = fdf
 
-CC = cc
+CC = gcc
 
 SRC = fdf.c
 
@@ -13,7 +13,7 @@ $(NAME): $(OBJ)
 	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/local/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/local/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -Lmlx_linux -L/usr/local/include -lmlx_linux -lXext -lX11 -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
