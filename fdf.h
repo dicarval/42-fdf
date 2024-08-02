@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/01 15:35:48 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/02 17:37:13 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include <X11/keysym.h>
 #include <mlx.h>
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 300
+#define WINDOW_WIDTH 1200
+#define WINDOW_HEIGHT 600
 
 #define MLX_ERROR 1
 
 #define RED_PIXEL 0xFF0000
-#define GREEN_PIXEL 0xFF00
+#define GREEN_PIXEL 0x00FF00
 #define WHITE_PIXEL 0xFFFFFF
 
 typedef struct s_rect
