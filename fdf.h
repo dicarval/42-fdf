@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/02 17:37:13 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:54:32 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 #define RED_PIXEL 0xFF0000
 #define GREEN_PIXEL 0x00FF00
+#define BLUE_PIXEL 0x0000FF
 #define WHITE_PIXEL 0xFFFFFF
 
 typedef struct s_rect
@@ -48,4 +49,5 @@ typedef struct s_data
     void	*mlx_ptr;
     void	*win_ptr;
 	t_img	img;
+	t_rect	rect;
 }	t_data;

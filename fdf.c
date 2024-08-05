@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/02 18:32:23 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:33:34 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,22 @@ int render_rect(t_img *img, t_rect rect)
 	}
 	return (0);
 }
+int	change_color(t_data *data)
+{
+	static t_rect	rect1 = {WINDOW_WIDTH - ((WINDOW_WIDTH/2)+50), WINDOW_HEIGHT - ((WINDOW_HEIGHT/2)+50), 100, 100, GREEN_PIXEL};
 
-void	render_background(t_img *img, int color)
+	if (rect1.color == GREEN_PIXEL)
+		rect1.color = BLUE_PIXEL;
+	else if (rect1.color == RED_PIXEL)
+		rect1.color = GREEN_PIXEL;
+	else
+		rect1.color = RED_PIXEL;
+	render_rect(&data->img, rect1);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
+	return (0);
+}
+
+/* void	render_background(t_img *img, int color)
 {
 	int	i;
 	int	j;
@@ -76,9 +90,9 @@ void	render_background(t_img *img, int color)
 			 img_pix_put(img, j++, i, color);
 		++i;
 	}
-}
+} */
 
-int	render(t_data *data)
+/* int	render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (1);
@@ -86,9 +100,9 @@ int	render(t_data *data)
     render_rect(&data->img, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100,
             100, 100, GREEN_PIXEL});
     render_rect(&data->img, (t_rect){0, 0, 100, 100, RED_PIXEL});
-    mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 	return (0);
-}
+} */
 
 int	main(void)
 {
@@ -108,8 +122,9 @@ int	main(void)
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp, &data.img.line_len,
 								&data.img.endian);
 	/* Setup hooks */
-    mlx_loop_hook(data.mlx_ptr, &render, &data);
-    mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_esc_press, &data);
+	/* mlx_loop_hook(data.mlx_ptr, &render, &data); */
+	mlx_loop_hook(data.mlx_ptr, &change_color, &data);
+	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_esc_press, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, NoEventMask, &handle_cross_press, &data);
     mlx_loop(data.mlx_ptr);
     /* we will exit the loop if there's no window left, and execute this code */
