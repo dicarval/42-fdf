@@ -6,48 +6,54 @@
 /*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/05 16:54:32 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/12 15:03:17 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <mlx.h>
+#ifndef FDF_H
+# define FDF_H
 
-#define WINDOW_WIDTH 1200
-#define WINDOW_HEIGHT 600
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <string.h>
+# include <math.h>
+# include <errno.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include <mlx.h>
 
-#define MLX_ERROR 1
+# define WINDOW_WIDTH 1600
+# define WINDOW_HEIGHT 800
+# define MLX_ERROR 1
 
-#define RED_PIXEL 0xFF0000
-#define GREEN_PIXEL 0x00FF00
-#define BLUE_PIXEL 0x0000FF
-#define WHITE_PIXEL 0xFFFFFF
-
-typedef struct s_rect
+typedef struct s_point
 {
-    int	x;
-    int	y;
-    int width;
-    int height;
-    int color;
-}	t_rect;
+	float	x;
+	float	y;
+	float	z;
+}	t_point;
 
 typedef struct s_img
 {
-    void	*mlx_img;
-    char	*addr;
-    int		bpp; /* bits per pixel */
-    int		line_len;
-    int		endian;
+	void	*mlx_img;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
 }	t_img;
 
 typedef struct s_data
 {
-    void	*mlx_ptr;
-    void	*win_ptr;
+	void	*mlx;
+	void	*win;
 	t_img	img;
-	t_rect	rect;
+	int		map_num;
+	int		max_argv;
+	char	**map_file;
+	t_point	**point_map;
 }	t_data;
+
+
+#endif
