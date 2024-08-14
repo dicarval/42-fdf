@@ -6,7 +6,7 @@
 #    By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 15:14:56 by dicarval          #+#    #+#              #
-#    Updated: 2024/08/07 15:17:18 by dicarval         ###   ########.fr        #
+#    Updated: 2024/08/13 18:01:43 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CC_FLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/local/lib -Lmlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CC_FLAGS) -Imlx_linux -I/usr/local/include -Lmlx_linux -lmlx_Linux -lXext -lX11 -O3 -c $< -o $@
+	$(CC) $(CC_FLAGS) -Imlx_linux -I/usr/local/include -Lmlx_linux -lmlx_Linux -lXext -lX11 -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/12 18:37:48 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/14 11:18:52 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ int	handle_esc_press(int keysym, t_data *data)
 	}
 	return (0);
 }
-void	set_variables
+//void	ft_set_variables(t_data *s_data)
 
 void	map_config(t_data *data)
 {
 	int	fd;
 
 	fd = check_map(data);
-	set_variables(t_data *data);
-
+	//ft_set_variables(data);
+	map_loading(data, fd, 0);
 
 
 	mlx_hook(data->win, KeyPress, KeyPressMask, &handle_esc_press, &data);
