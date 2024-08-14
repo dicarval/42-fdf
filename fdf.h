@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/14 11:48:57 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:50:18 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <errno.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include <mlx.h>
+//# include <mlx.h>
+# include "./mlx_linux/mlx.h"
 
 # define WINDOW_WIDTH 1600
 # define WINDOW_HEIGHT 800

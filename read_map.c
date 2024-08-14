@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:20:35 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/14 11:54:07 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/14 13:50:18 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void	map_loading(t_data *data, int fd, int index)
 		data->map_content = malloc(sizeof(int *) * data->nb_lines);
 	if (line)
 		data->map_content[index] = split_atoi(data, line);
-
+	else
+		data->map_content[index] = (int *) line;
+	free(line);
 }
