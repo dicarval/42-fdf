@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/14 13:50:18 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/16 13:11:24 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	check_digits_map(int fd, t_data *data)
 		}
 		free(line);
 	}
+	data->nb_colls = line_len2;
 	return(1);
 }
 

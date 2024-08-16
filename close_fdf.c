@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_fdf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:30:09 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/12 15:29:26 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/16 10:02:00 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	free_mlx(t_data *data)
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 }
+
 void	free_map(t_data *data)
 {
 	int i;

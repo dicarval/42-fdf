@@ -6,11 +6,36 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:20:35 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/14 13:50:18 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/16 15:08:07 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	ft_max_min_z(t_data *data, int nb)
+{
+	if (!data->max_z || nb > data->max_z)
+		data-> max_z = nb;
+	if (!data->min_z || nb < data->min_z)
+		data-> min_z = nb;
+}
+
+int	*split_atoi(t_data *data, char *line)
+{
+	char	**split_chars;
+	int		*int_array;
+	int		i;
+
+	i = 0;
+	split_chars = ft_split(line, ' ');
+	int_array = malloc(sizeof(int) * data->nb_colls);
+	while (split_chars[i++])
+	{
+		int_array[i] = ft_atoi(split_chars[i]);
+		free(split_chars[i]);
+	}
+	return (int_array);
+}
 
 void	map_loading(t_data *data, int fd, int index)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/14 11:18:52 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/16 15:46:47 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,31 @@ int	handle_esc_press(int keysym, t_data *data)
 	}
 	return (0);
 }
-//void	ft_set_variables(t_data *s_data)
+void	ft_set_variables(t_data *data)
+{
+	data->size_grid = 10;
+	data->angle_y = 0.523599;
+	data->angle_x = 0.523599;
+	data->angle_z = 0.7854;
+	data->z_modify = 1;
+	data->screen.max_x = 0;
+	data->screen.min_x = 0;
+	data->screen.max_y = 0;
+	data->screen.min_y = 0;
+	data->max_z = 0;
+	data->min_z = 0;
+	//data->nb_view = 1;
+}
 
 void	map_config(t_data *data)
 {
 	int	fd;
 
 	fd = check_map(data);
-	//ft_set_variables(data);
+	ft_set_variables(data);
 	map_loading(data, fd, 0);
+
+
 
 
 	mlx_hook(data->win, KeyPress, KeyPressMask, &handle_esc_press, &data);
@@ -57,7 +73,7 @@ int	main(int argc, char **argv)
 {
 	static t_data	data;
 
-	if (argc >= 2)
+	if (argc = 2)
 	{
 		data.mlx = mlx_init();
 		if (data.mlx == NULL)
@@ -71,6 +87,6 @@ int	main(int argc, char **argv)
 		mlx_loop(data.mlx);
 	}
 	else
-		perror("Not enough arguments\n");
+		perror("Number of arguments isn't correct\n");
 	return (0);
 }
