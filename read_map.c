@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:20:35 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/16 15:08:07 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/19 11:36:48 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	*split_atoi(t_data *data, char *line)
 
 	i = 0;
 	split_chars = ft_split(line, ' ');
-	int_array = malloc(sizeof(int) * data->nb_colls);
+	int_array = malloc(sizeof(int) * data->width);
 	while (split_chars[i++])
 	{
 		int_array[i] = ft_atoi(split_chars[i]);
@@ -42,11 +42,11 @@ void	map_loading(t_data *data, int fd, int index)
 	char	*line;
 
 	line = get_next_line(fd);
-	data->nb_lines++;
+	data->height++;
 	if (line)
 		map_loading(data, fd, index + 1);
 	else
-		data->map_content = malloc(sizeof(int *) * data->nb_lines);
+		data->map_content = malloc(sizeof(int *) * data->height);
 	if (line)
 		data->map_content[index] = split_atoi(data, line);
 	else

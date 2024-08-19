@@ -6,7 +6,7 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 15:14:56 by dicarval          #+#    #+#              #
-#    Updated: 2024/08/16 15:41:50 by dicarval         ###   ########.fr        #
+#    Updated: 2024/08/19 10:22:18 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fdf
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
 
-SRC = fdf.c
+SRC =
 
 OBJ = $(SRC:.c=.o)
 
