@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/19 14:29:47 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:49:53 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ typedef struct s_data
 	int			width;
 	int			max_z;
 	int			min_z;
-	int			new_max_z;
-	float		z_modify;
+	float		z_adapted;
 	float		angle_z;
 	float		angle_x;
 	float		angle_y;
