@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:20:35 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/19 11:36:48 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/21 09:54:01 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	*split_atoi(t_data *data, char *line)
 	while (split_chars[i++])
 	{
 		int_array[i] = ft_atoi(split_chars[i]);
+		ft_max_and_min(int_array[i], data);
 		free(split_chars[i]);
 	}
 	return (int_array);

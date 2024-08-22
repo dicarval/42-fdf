@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:49:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/20 17:19:35 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/21 10:32:33 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ t_point	init_point(int y, int x, int z)
 	point.x = x;
 	point.z = z;
 	return (point);
+}
+
+t_point	isometric_for_scale(t_point a, t_data *data)
+{
+	float	temp_x;
+	float	temp_y;
+
+	temp_x = a.x;
+	temp_y = a.y;
+	a.x = ((temp_x - temp_y) * \
+		cos(data->angle_x)) * data->size_grid;
+	a.y = ((-(a.z) / data->z_adapted + (temp_x + temp_y) * \
+	sin(data->angle_y))) * data->size_grid;
+	if (data->min_z < 0)
+		a.z = a.z - data->min_z + 1;
+	return (a);
 }
 
 void	limits_finder(t_point point, t_data *data)
@@ -51,7 +67,7 @@ void	map_to_point(t_data *data)
 
 	data->point_map = malloc(sizeof(t_point *) * data->height);
 	y = 0;
-	while (data->map_content[y++])
+	while (data->map_content[y])
 	{
 		x = 0;
 		data->point_map = malloc(sizeof(t_point *) * data->width);
@@ -61,5 +77,6 @@ void	map_to_point(t_data *data)
 			limits_finder(data->point_map[y][x], data);
 			x++;
 		}
+		y++;
 	}
 }

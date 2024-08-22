@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/20 11:49:53 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:05:54 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define WINDOW_WIDTH 1920
 # define WINDOW_HEIGHT 1200
 # define MLX_ERROR 1
+# define DEFAULT_ANG 0.523599
 
 typedef struct s_img
 {
@@ -80,8 +81,9 @@ typedef struct s_data
 	int			width;
 	int			max_z;
 	int			min_z;
-	float		z_adapted;
-	float		angle_z;
+	int			z_adapted;
+	int			x_pos;
+	int			y_pos;
 	float		angle_x;
 	float		angle_y;
 	float		size_grid;
