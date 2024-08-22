@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/21 12:12:21 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:05:47 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_set_variables(t_data *data)
 	data->size_grid = 10;
 	data->angle_y = DEFAULT_ANG;
 	data->angle_x = DEFAULT_ANG;
+	data->def_angle = DEFAULT_ANG;
 	data->z_adapted = 1;
 	data->screen.max_x = 0;
 	data->screen.min_x = 0;

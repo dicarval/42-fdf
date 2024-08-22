@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/21 12:05:54 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:20:49 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ typedef struct s_data
 	int			z_adapted;
 	int			x_pos;
 	int			y_pos;
-	float		angle_x;
-	float		angle_y;
+	double		angle_x;
+	double		angle_y;
+	double		def_angle;
 	float		size_grid;
 }	t_data;
 
