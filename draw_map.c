@@ -6,13 +6,13 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:43:52 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/22 16:34:44 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:00:54 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	iso(int *x, int *y, int z, double teta)
+static void	iso(int *x, int *y, int z, double teta)
 {
 	int	previous_x;
 	int	previous_y;
@@ -23,7 +23,7 @@ void	iso(int *x, int *y, int z, double teta)
 	*y = (previous_x + previous_y) * sin(teta) - z;
 }
 
-t_point	projection(t_point p, t_data *data)
+static t_point	projection(t_point p, t_data *data)
 {
 	iso(&p.x, &p.y, p.z, data->def_angle);
 	p.x += data->x_pos;

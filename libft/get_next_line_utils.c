@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 19:59:54 by dicarval          #+#    #+#             */
-/*   Updated: 2024/05/28 14:29:37 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:36:09 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	free_content(t_list **lnklist, t_list *char_n_used)
+void	free_content(t_gnl **lnklist, t_gnl *char_n_used)
 {
-	t_list	*tmp;
-	t_list	*current;
+	t_gnl	*tmp;
+	t_gnl	*current;
 
 	if (*lnklist == NULL)
 		return ;
@@ -37,7 +37,7 @@ void	free_content(t_list **lnklist, t_list *char_n_used)
 	}
 }
 
-size_t	list_len(t_list *lnklist)
+size_t	list_len(t_gnl *lnklist)
 {
 	size_t	line_len;
 	int		i;
@@ -62,7 +62,7 @@ size_t	list_len(t_list *lnklist)
 	return (line_len);
 }
 
-int	end_line(t_list *list)
+int	end_line(t_gnl *list)
 {
 	int	i;
 
@@ -82,7 +82,7 @@ int	end_line(t_list *list)
 	return (0);
 }
 
-t_list	*lstlast(t_list *lst)
+t_gnl	*lstlast(t_gnl *lst)
 {
 	if (lst == NULL)
 		return (NULL);
@@ -91,9 +91,9 @@ t_list	*lstlast(t_list *lst)
 	return (lst);
 }
 
-void	lstadd_back(t_list **lst, t_list *new)
+void	lstadd_back(t_gnl **lst, t_gnl *new)
 {
-	t_list	*last;
+	t_gnl	*last;
 
 	if (lst == NULL || new == NULL)
 		return ;

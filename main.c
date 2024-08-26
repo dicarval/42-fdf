@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/22 16:05:47 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/26 18:45:52 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	handle_esc_press(int keysym, t_data *data)
 	}
 	return (0);
 }
-void	ft_set_variables(t_data *data)
+static void	ft_set_variables(t_data *data)
 {
 	data->size_grid = 10;
 	data->angle_y = DEFAULT_ANG;
@@ -52,7 +52,7 @@ void	ft_set_variables(t_data *data)
 	data->y_pos = 0;
 }
 
-void	map_config(t_data *data)
+static void	map_config(t_data *data)
 {
 	int	fd;
 
@@ -66,8 +66,8 @@ void	map_config(t_data *data)
 		&data->img.bpp, &data->img.line_len, &data->img.endian);
 	data->win = mlx_new_window(data->mlx, \
 		WINDOW_WIDTH, WINDOW_HEIGHT, "FdF - DICARVAL");
-	mlx_hook(data->win, KeyPress, KeyPressMask, &handle_esc_press, &data);
-	mlx_hook(data->win, DestroyNotify, NoEventMask, &handle_cross_press, &data);
+	mlx_hook(data->win, KeyPress, KeyPressMask, ft_close_fdf, &data);
+	mlx_hook(data->win, DestroyNotify, NoEventMask, ft_close_fdf, &data);
 	ft_draw_image_to_grid(data);
 }
 

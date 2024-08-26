@@ -6,13 +6,33 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/19 11:36:04 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/26 18:44:10 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	check_empty_map(t_data *data, char *line)
+static int	strcmp_fdf(char *map_name)
+{
+	int		i;
+	int		j;
+	char	*fdf;
+
+	fdf = ".fdf";
+	i = 0;
+	j = 0;
+	while (map_name[i] != '\0')
+		i++;
+	i -= 4;
+	while (map_name[i] != '\0')
+	{
+		if (map_name[i++] != fdf[j++])
+			return (0);
+	}
+	return (1);
+}
+
+static void	check_empty_map(t_data *data, char *line)
 {
 	if (line == NULL)
 	{
@@ -20,7 +40,8 @@ void	check_empty_map(t_data *data, char *line)
 		ft_close_fdf(data);
 	}
 }
-int	digit_check(t_data *data, char *line)
+
+static int	digit_check(t_data *data, char *line)
 {
 	char	**temp;
 	int		i;
@@ -47,7 +68,7 @@ int	digit_check(t_data *data, char *line)
 	return (line_len);
 }
 
-int	check_digits_map(int fd, t_data *data)
+static int	check_digits_map(int fd, t_data *data)
 {
 	char	*line;
 	int		line_len;
@@ -91,7 +112,7 @@ int	check_map(t_data *data)
 		}
 		else if (check_digits_map(fd, data))
 		{
-			close (fd);
+			close(fd);
 			fd = open(data->map_file[data->map_num], O_RDONLY);
 		}
 		return (fd);

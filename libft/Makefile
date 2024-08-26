@@ -6,7 +6,7 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/29 17:05:29 by dicarval          #+#    #+#              #
-#    Updated: 2024/05/13 12:05:19 by dicarval         ###   ########.fr        #
+#    Updated: 2024/08/26 17:32:40 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,14 +35,13 @@ all: ${NAME}
 	@${CC} ${FLAGS} -c $^ -o $@
 
 ${NAME}: ${OBJS}
-	${LIBC} ${NAME} ${OBJS}
+	@${LIBC} ${NAME} ${OBJS}
 
 fclean: clean
 	@${RM} ${NAME}
 
 clean:
-	@${RM} ${OBJS} ${OBJS_B} bonus
-	@echo "Cleaned"
+	@${RM} ${OBJS}
 
 re: fclean all
 

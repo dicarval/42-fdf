@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 12:30:09 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/16 10:02:00 by dicarval         ###   ########.fr       */
+/*   Created: 2024/08/09 14:53:57 by dicarval          #+#    #+#             */
+/*   Updated: 2024/08/26 16:53:20 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,57 @@
 
 void	free_mlx(t_data *data)
 {
-	if (data->img.mlx_img)
-		mlx_destroy_image(data->mlx, data->img.mlx_img);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
+	if (data->img.mlx_img)
+		mlx_destroy_image(data->mlx, data->img.mlx_img);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 }
 
 void	free_map(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (data->map_file && data->map_file[i++])
+	while (data->map_content && data->map_content[i])
 	{
-		free(data->map_file[i]);
+		free(data->map_content[i]);
 		free(data->point_map[i]);
+		i++;
 	}
-	free(data->map_file);
+	free(data->map_content);
 	free(data->point_map);
-	data->map_file = NULL;
+	data->map_content = NULL;
 	data->point_map = NULL;
 }
 
-int	ft_close_fdf(t_data *data)
+int	ft_close_fdf(void *data)
 {
-	free_map(data);
-	free_mlx(data);
+	free_map((t_data *) data);
+	free_mlx((t_data *) data);
 	exit(0);
 	return (0);
+}
+
+void	free_split(char **line, int code, t_data *data)
+{
+	int i;
+
+	if (code == 1)
+	{
+		perror("The map file has a non-digit character\n");
+		i = 0;
+		while (line[i])
+			free(line[i++]);
+		free(line);
+		ft_close_fdf(data);
+	}
+	if (code == 2)
+	{
+		i = 0;
+		while (line[i])
+			free(line[i++]);
+		free(line);
+	}
 }

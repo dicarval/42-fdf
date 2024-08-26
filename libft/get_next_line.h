@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:09:13 by dicarval          #+#    #+#             */
-/*   Updated: 2024/05/28 13:04:33 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:35:41 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-typedef struct s_list
+typedef struct s_gnl
 {
 	char			*buf;
-	struct s_list	*next;
-}				t_list;
+	struct s_gnl	*next;
+}				t_gnl;
 
 char	*get_next_line(int fd);
-void	create_list(t_list **lnklist, int fd);
-char	*cpy_line(t_list *lnklist);
-void	prep_next_line(t_list **lnklist);
-int		end_line(t_list *list);
-void	lstadd_back(t_list **lst, t_list *new);
-t_list	*lstlast(t_list *lst);
-size_t	list_len(t_list *lnklist);
-void	free_content(t_list **lnklist, t_list *char_n_used);
+void	create_list(t_gnl **lnklist, int fd);
+char	*cpy_line(t_gnl *lnklist);
+void	prep_next_line(t_gnl **lnklist);
+int		end_line(t_gnl *list);
+void	lstadd_back(t_gnl **lst, t_gnl *new);
+t_gnl	*lstlast(t_gnl *lst);
+size_t	list_len(t_gnl *lnklist);
+void	free_content(t_gnl **lnklist, t_gnl *char_n_used);
 
 #endif

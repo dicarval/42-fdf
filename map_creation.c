@@ -6,13 +6,13 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:49:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/22 16:05:17 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:00:39 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point	init_point(int y, int x, int z)
+static t_point	init_point(int y, int x, int z)
 {
 	t_point point;
 
@@ -22,7 +22,7 @@ t_point	init_point(int y, int x, int z)
 	return (point);
 }
 
-t_point	isometric_for_scale(t_point a, t_data *data)
+static t_point	isometric_for_scale(t_point a, t_data *data)
 {
 	float	temp_x;
 	float	temp_y;
@@ -38,7 +38,7 @@ t_point	isometric_for_scale(t_point a, t_data *data)
 	return (a);
 }
 
-void	limits_finder(t_point point, t_data *data)
+static void	limits_finder(t_point point, t_data *data)
 {
 	int	x;
 	int	y;

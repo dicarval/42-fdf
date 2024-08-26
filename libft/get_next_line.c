@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dicarval <dicarval@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 11:54:23 by dicarval          #+#    #+#             */
-/*   Updated: 2024/06/26 14:25:18 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:35:55 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	prep_next_line(t_list **lnklist)
+void	prep_next_line(t_gnl **lnklist)
 {
-	t_list	*last;
-	t_list	*char_n_used;
+	t_gnl	*last;
+	t_gnl	*char_n_used;
 	int		i;
 	int		k;
 
 	if (lnklist == NULL)
 		return ;
-	char_n_used = malloc(sizeof(t_list));
+	char_n_used = malloc(sizeof(t_gnl));
 	char_n_used->buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	char_n_used->next = NULL;
 	if (char_n_used->buf == NULL)
@@ -39,7 +39,7 @@ void	prep_next_line(t_list **lnklist)
 	free_content(lnklist, char_n_used);
 }
 
-char	*cpy_line(t_list *lnklist)
+char	*cpy_line(t_gnl *lnklist)
 {
 	int		i;
 	int		j;
@@ -66,14 +66,14 @@ char	*cpy_line(t_list *lnklist)
 	return (new_line);
 }
 
-void	create_list(t_list **lnklist, int fd)
+void	create_list(t_gnl **lnklist, int fd)
 {
 	int		i;
-	t_list	*node;
+	t_gnl	*node;
 
 	while (end_line(*lnklist) == 0)
 	{
-		node = malloc(sizeof(t_list));
+		node = malloc(sizeof(t_gnl));
 		node->buf = malloc(BUFFER_SIZE + 1);
 		node->next = NULL;
 		if (node->buf == NULL)
@@ -92,7 +92,7 @@ void	create_list(t_list **lnklist, int fd)
 
 char	*get_next_line(int fd)
 {
-	static t_list	*lnklist = NULL;
+	static t_gnl	*lnklist = NULL;
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -105,21 +105,4 @@ char	*get_next_line(int fd)
 		return (NULL);
 	prep_next_line (&lnklist);
 	return (line);
-}
-
-int	main()
-{
-	int		fd;
-	char	*line;
-	int		lines;
-
-	lines = 1;
-	fd = 1;
-	/* fd = open("test.txt", O_RDONLY); */
-
-	while ((line = get_next_line(fd)))
-	{
-		printf("%d->%s", lines++, line);
-		free(line);
-	}
 }

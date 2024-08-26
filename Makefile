@@ -6,33 +6,49 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 15:14:56 by dicarval          #+#    #+#              #
-#    Updated: 2024/08/19 10:22:18 by dicarval         ###   ########.fr        #
+#    Updated: 2024/08/26 18:35:54 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
+NAME =		fdf
 
-CC = gcc
-CC_FLAGS = -Wall -Wextra -Werror
+CC =		cc
+CFLAGS =	-Wall -Wextra -Werror
 
-SRC =
+SRC =		bresnham.c check_map.c close_fdf.c draw_map.c \
+			main.c map_creation.c read_map.c
 
-OBJ = $(SRC:.c=.o)
+OBJ =		$(SRC:.c=.o)
 
-all: $(NAME)
+MINILIBX =	-Lmlibx -L/usr/local/lib -lmlx -lXext -lX11 -lm -lz
+LIBFT =		./libft/libft.a
+PRINTF =	./ft_printf/libftprintf.a
 
-$(NAME): $(OBJ)
-	$(CC) $(CC_FLAGS) $(OBJ) -Lmlibx -lmlx -L/usr/local/lib -Lmlibx -lXext -lX11 -lm -lz -o $(NAME)
+all:		$(NAME)
 
-%.o: %.c
-	$(CC) $(CC_FLAGS) -Imlibx -I/usr/local/include -Lmlibx -lmlx -lXext -lX11 -c $< -o $@
+$(LIBFT):
+			make -C ./libft/
+
+$(PRINTF):
+			make -C ./ft_printf/
+
+
+$(NAME):	$(OBJ) $(LIBFT) $(PRINTF)
+			$(CC) $(CC_FLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MINILIBX) -o $(NAME)
+
+%.o:		%.c
+			make -C ./mlibx/
+			$(CC) $(CC_FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+			rm -f $(OBJ)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
+			rm -f $(NAME)
+			make clean -C ./mlibx/
+			make fclean -C ./libft/
+			make fclean -C ./ft_printf/
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re
