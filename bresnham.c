@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:50:02 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/26 17:01:21 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/28 15:00:23 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (!(x < 0 || y < 0 || x >= data->screen.max_x || y >= data->screen.max_y))
+	if ((x >= 0 && x < WINDOW_WIDTH) && (y >= 0 && y < WINDOW_HEIGHT))
 	{
 		dst = data->img.addr + (y * data->img.line_len + \
 		x * (data->img.bpp / 8));
@@ -39,7 +39,7 @@ static t_param	*init_param(t_point a, t_point b)
 {
 	t_param	*param;
 
-	param = (t_param *)malloc(sizeof(t_param));
+	param = malloc(sizeof(t_param *));
 	if (!param)
 		return (NULL);
 	param->dx = abs(b.x - a.x);

@@ -6,14 +6,14 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 15:14:56 by dicarval          #+#    #+#              #
-#    Updated: 2024/08/26 18:35:54 by dicarval         ###   ########.fr        #
+#    Updated: 2024/08/28 16:37:28 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		fdf
 
 CC =		cc
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror -g
 
 SRC =		bresnham.c check_map.c close_fdf.c draw_map.c \
 			main.c map_creation.c read_map.c
@@ -37,7 +37,7 @@ $(NAME):	$(OBJ) $(LIBFT) $(PRINTF)
 			$(CC) $(CC_FLAGS) $(OBJ) $(LIBFT) $(PRINTF) $(MINILIBX) -o $(NAME)
 
 %.o:		%.c
-			make -C ./mlibx/
+#make -C ./mlibx/
 			$(CC) $(CC_FLAGS) -c $< -o $@
 
 clean:
@@ -45,10 +45,13 @@ clean:
 
 fclean:		clean
 			rm -f $(NAME)
-			make clean -C ./mlibx/
+#make clean -C ./mlibx/
 			make fclean -C ./libft/
 			make fclean -C ./ft_printf/
-
 re:			fclean all
 
 .PHONY:		all clean fclean re
+
+map:
+		@make
+		./fdf ./Maps/42.fdf
