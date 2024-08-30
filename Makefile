@@ -6,7 +6,7 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 15:14:56 by dicarval          #+#    #+#              #
-#    Updated: 2024/08/28 16:37:28 by dicarval         ###   ########.fr        #
+#    Updated: 2024/08/30 10:55:22 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC =		cc
 CFLAGS =	-Wall -Wextra -Werror -g
 
 SRC =		bresnham.c check_map.c close_fdf.c draw_map.c \
-			main.c map_creation.c read_map.c
+			main.c map_creation.c read_map.c range_to_screen.c
 
 OBJ =		$(SRC:.c=.o)
 

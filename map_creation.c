@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:49:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/29 18:43:37 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/30 12:19:56 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static void	limits_finder(t_point point, t_data *data)
 	int	x;
 	int	y;
 
-	if (data->max_z - data->min_z > 100)
-		data->z_adapted = 5;
-	if (data->max_z - data->min_z > 1000)
-		data->z_adapted = 50;
+	if (data->max_z - data->min_z > 90)
+		data->z_adapted = 8;
+	if (data->max_z - data->min_z > 900)
+		data->z_adapted = 80;
 	x = point.x;
 	y = point.y;
 	if (x < data->range.min_x && x < 0)
@@ -62,5 +62,5 @@ void	map_to_point(t_data *data)
 		}
 		y++;
 	}
-	//range_to_zoom(data);
+	range_to_zoom(data);
 }

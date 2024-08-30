@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:53:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/28 15:00:10 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/30 18:38:37 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	free_map(t_data *data)
 
 int	ft_close_fdf(void *data)
 {
-	ft_printf("ola");
 	free_map((t_data *) data);
 	free_mlx((t_data *) data);
 	exit(0);
