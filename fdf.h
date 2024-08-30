@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/28 17:09:15 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:11:32 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # include "./ft_printf/ft_printf.h"
 # include "./mlibx/mlx.h"
 
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define W_WIDTH 1920
+# define W_HEIGHT 1000
 # define MLX_ERROR 1
 # define DEFAULT_ANG 0.523599
 
@@ -73,6 +73,7 @@ typedef struct s_data
 	t_img		img;
 	t_point		**point_map;
 	t_range		range;
+	int			size_grid;
 	int			map_num;
 	int			max_argv;
 	char		**map_file;

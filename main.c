@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/28 17:09:18 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:50:37 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static void	ft_set_variables(t_data *data)
 	data->range.min_x = 0;
 	data->range.max_y = 0;
 	data->range.min_y = 0;
-	data->range_x = 0;
-	data->range_y = 0;
 	data->max_z = 0;
 	data->min_z = 0;
-	data->zoom = 0;
-
+	data->x_pos = 0;
+	data->y_pos = 0;
+	data->zoom = 1;
+	data->size_grid = 1;
 }
 
 static void	map_config(t_data *data)
@@ -56,11 +56,11 @@ static void	map_config(t_data *data)
 	map_loading(data, fd, 0);
 	map_to_point(data);
 	data->img.mlx_img = \
-		mlx_new_image(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+		mlx_new_image(data->mlx, W_WIDTH, W_HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.mlx_img, \
 		&data->img.bpp, &data->img.line_len, &data->img.endian);
 	data->win = mlx_new_window(data->mlx, \
-		WINDOW_WIDTH, WINDOW_HEIGHT, "FdF - dicarval");
+		W_WIDTH, W_HEIGHT, "FdF - dicarval");
 	mlx_hook(data->win, KeyPress, KeyPressMask, handle_esc_press, &data);
 	mlx_hook(data->win, DestroyNotify, NoEventMask, ft_close_fdf, &data);
 	ft_draw_image_to_grid(data);

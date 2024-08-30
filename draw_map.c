@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:43:52 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/28 16:00:13 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/29 15:21:44 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_point	projection(t_point p, t_data *data)
 	temp = p;
 	temp.y *= data->zoom;
 	temp.x *= data->zoom;
+	temp.z = temp.z / data->z_adapted;
 	iso(&temp.x, &temp.y, temp.z, data->def_angle);
 	temp.x += data->x_pos;
 	temp.y += data->y_pos;

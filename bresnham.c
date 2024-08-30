@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:50:02 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/28 15:00:23 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/29 12:07:14 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if ((x >= 0 && x < WINDOW_WIDTH) && (y >= 0 && y < WINDOW_HEIGHT))
+	if ((x >= 0 && x < W_WIDTH) && (y >= 0 && y < W_HEIGHT))
 	{
 		dst = data->img.addr + (y * data->img.line_len + \
 		x * (data->img.bpp / 8));

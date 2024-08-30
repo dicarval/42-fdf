@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:49:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/28 17:25:02 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/08/29 18:43:37 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,56 +22,15 @@ t_point	init_point(int y, int x, int z)
 	return (point);
 }
 
-/* static t_point	isometric_for_scale(t_point a, t_data *data)
-{
-	float	temp_x;
-	float	temp_y;
-
-	temp_x = a.x;
-	temp_y = a.y;
-	a.x = ((temp_x - temp_y) * \
-		cos(data->angle_x)) * data->size_grid;
-	a.y = ((-(a.z) / data->z_adapted + (temp_x + temp_y) * \
-	sin(data->angle_y))) * data->size_grid;
-	if (data->min_z < 0)
-		a.z = a.z - data->min_z + 1;
-	return (a);
-} */
-
-static void	range_to_zoom(t_data *data)
-{
-	int	av_width;
-	int	av_height;
-
-/* 	ft_printf("%d\n", data->range_x);
-	ft_printf("%d\n", data->range.max_x);
-	ft_printf("%d\n", data->range.min_x); */
-	data->range_x = data->range.max_x - data->range.min_x;
-	data->range_y = data->range.max_y - data->range.min_y;
-	av_width = WINDOW_WIDTH;
-	av_height = WINDOW_HEIGHT;
-	if (data->range_x > 0 && data->range_y > 0)
-	{
-		av_width = WINDOW_WIDTH - data->range_x;
-		av_height = WINDOW_HEIGHT - data->range_y;
-	}
-	data->zoom = (av_width + av_height) / 80;
-	data->x_pos = (WINDOW_WIDTH / 2) - (data->range_x * 7);
-	data->y_pos = (WINDOW_HEIGHT / 2) - (data->range_y * 30);
-	ft_printf("%d\n", data->x_pos);
-	ft_printf("%d\n", data->y_pos);
-}
-
 static void	limits_finder(t_point point, t_data *data)
 {
 	int	x;
 	int	y;
 
 	if (data->max_z - data->min_z > 100)
-		data->z_adapted = 10;
+		data->z_adapted = 5;
 	if (data->max_z - data->min_z > 1000)
-		data->z_adapted = 100;
-	//point = projection(point, data);
+		data->z_adapted = 50;
 	x = point.x;
 	y = point.y;
 	if (x < data->range.min_x && x < 0)
@@ -103,9 +62,5 @@ void	map_to_point(t_data *data)
 		}
 		y++;
 	}
-	ft_printf("%d\n", data->range.min_x);
-	ft_printf("%d\n", data->range.max_x);
-	ft_printf("%d\n", data->range.min_y);
-	ft_printf("%d\n", data->range.max_y);
-	range_to_zoom(data);
+	//range_to_zoom(data);
 }
