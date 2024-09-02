@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/26 18:44:10 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:06:01 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,11 @@ static int	check_digits_map(int fd, t_data *data)
 		{
 			free(line);
 			perror("The map isn't a square or a rectangule\n");
-			ft_close_fdf(data);
+			exit(0);
 		}
 		free(line);
 	}
+	free(line);
 	data->width = line_len2;
 	return(1);
 }

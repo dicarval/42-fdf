@@ -22,9 +22,9 @@ void	bigger_case(t_data *data)
 		data->size_grid /= 3;
 	}
 	data->x_pos = W_WIDTH / 2 \
-		- data->range.max_x / 3;
-	data->y_pos = W_HEIGHT / 2 \
-		- data->range.max_y / 2 - data->range.max_y / 4;
+		- data->range.max_x / 4;
+	data->y_pos = W_HEIGHT / 3 \
+		- data->range.max_y / 3;
 }
 
 void	smaller_case(t_data *data)
@@ -37,9 +37,9 @@ void	smaller_case(t_data *data)
 		data->size_grid *= 3;
 	}
 	data->x_pos = W_WIDTH / 2 \
-		- data->range.max_x / 3;
-	data->y_pos = W_HEIGHT / 2 \
-		- data->range.max_y / 2 - data->range.max_y / 3;
+		- data->range.max_x / 4;
+	data->y_pos = W_HEIGHT / 3 \
+		- data->range.max_y / 3;
 }
 
 void	range_to_zoom(t_data *data)
@@ -49,15 +49,8 @@ void	range_to_zoom(t_data *data)
 
 	avb_wth = W_WIDTH - data->range.max_x;
 	avb_hth = W_HEIGHT - data->range.max_y;
-/* 	ft_printf("%d\n", avb_wth);
-	ft_printf("%d\n", avb_hth); */
 	if (avb_wth < 0 || avb_hth < 0)
 		bigger_case(data);
 	else
 		smaller_case(data);
-/* 	ft_printf("%d\n", data->range.max_x);
-	ft_printf("%d\n", data->range.max_y);
-	ft_printf("%d\n", data->x_pos);
-	ft_printf("%d\n", data->y_pos); */
-	ft_printf("%d\n", data->size_grid);
 }

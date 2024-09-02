@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/30 18:37:51 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:28:08 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static void	map_config(t_data *data)
 		&data->img.bpp, &data->img.line_len, &data->img.endian);
 	data->win = mlx_new_window(data->mlx, \
 		W_WIDTH, W_HEIGHT, "FdF - dicarval");
-	mlx_hook(data->win, KeyPress, KeyPressMask, handle_esc_press, &data);
-	mlx_hook(data->win, DestroyNotify, NoEventMask, ft_close_fdf, &data);
-	ft_draw_image_to_grid(data);
+	mlx_hook(data->win, KeyPress, KeyPressMask, handle_esc_press, data);
+	mlx_hook(data->win, DestroyNotify, NoEventMask, ft_close_fdf, data);
+	draw_image_to_grid(data);
 }
 
 int	main(int argc, char **argv)
@@ -65,9 +65,6 @@ int	main(int argc, char **argv)
 		if (data.mlx == NULL)
 			return (MLX_ERROR);
 		data.map_num = 1;
-		data.max_argv = 0;
-		while (argv[data.max_argv] != NULL)
-			data.max_argv++;
 		data.map_file = argv;
 		map_config(&data);
 		mlx_loop(data.mlx);

@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:53:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/30 18:38:37 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:20:12 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_close_fdf(void *data)
 	return (0);
 }
 
-void	free_split(char **line, int code, t_data *data)
+void	free_split(char **charct, int code, t_data *data)
 {
 	int i;
 
@@ -55,16 +55,16 @@ void	free_split(char **line, int code, t_data *data)
 	{
 		perror("The map file has a non-digit character\n");
 		i = 0;
-		while (line[i])
-			free(line[i++]);
-		free(line);
+		while (charct[i])
+			free(charct[i++]);
+		free(charct);
 		ft_close_fdf(data);
 	}
 	if (code == 2)
 	{
 		i = 0;
-		while (line[i])
-			free(line[i++]);
-		free(line);
+		while (charct[i])
+			free(charct[i++]);
+		free(charct);
 	}
 }

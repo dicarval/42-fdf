@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/30 18:02:53 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:26:14 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	map_loading(t_data *data, int fd, int index);
 //Generate the list of points and draw them
 void	map_to_point(t_data *data);
 void	range_to_zoom(t_data *data);
-void	ft_draw_image_to_grid(t_data *data);
+void	draw_image_to_grid(t_data *data);
 t_point	projection(t_point p, t_data *data);
 void	bresnham(t_data *data, t_point a, t_point b);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

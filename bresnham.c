@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:50:02 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/30 18:02:28 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:29:05 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_param	*init_param(t_point a, t_point b)
 {
 	t_param	*param;
 
-	param = malloc(sizeof(t_param *));
+	param = malloc(sizeof((t_param *) + 1));
 	if (!param)
 		return (NULL);
 	param->dx = abs(b.x - a.x);
