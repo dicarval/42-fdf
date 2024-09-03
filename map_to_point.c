@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:49:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/02 16:17:20 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:31:54 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,16 @@ static void	limits_finder(t_point point, t_data *data)
 	int	x;
 	int	y;
 
-	if (data->max_z - data->min_z > 90)
+	if (data->range_z > 90)
 		data->z_adapted = 8;
-	if (data->max_z - data->min_z > 900)
+	if (data->range_z > 900)
 		data->z_adapted = 80;
 	x = point.x;
 	y = point.y;
-	if (x < data->range.min_x && x < 0)
-		data->range.min_x = x;
-	if (y < data->range.min_y && y < 0)
-		data->range.min_y = y;
-	if (!data->range.max_x || x > data->range.max_x)
-		data->range.max_x = x;
-	if (!data->range.max_y || y > data->range.max_y)
-		data->range.max_y = y;
+	if (!data->max_x || x > data->max_x)
+		data->max_x = x;
+	if (!data->max_y || y > data->max_y)
+		data->max_y = y;
 }
 
 void	map_to_point(t_data *data)
@@ -49,11 +45,15 @@ void	map_to_point(t_data *data)
 	int	x;
 
 	data->point_map = malloc(sizeof(t_point *) * data->height);
+	if (!data->point_map)
+		malloc_fail(data);
 	y = 0;
 	while (data->map_content[y])
 	{
 		x = 0;
 		data->point_map[y] = malloc(sizeof(t_point) * data->width);
+		if (!data->point_map[y])
+			malloc_fail(data);
 		while (x < data->width)
 		{
 			data->point_map[y][x] = init_point(y, x, data->map_content[y][x]);

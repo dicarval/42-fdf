@@ -6,18 +6,46 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:53:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/02 16:20:12 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/03 12:24:26 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+void	malloc_fail(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	perror("Malloc failed\n");
+	if (data->map_content)
+	{
+		if (data->map_content[0])
+		{
+			while (data->map_content[++i])
+				free(data->map_content[i]);
+		}
+		free(data->map_content);
+	}
+	i = -1;
+	if (data->point_map)
+	{
+		if (data->point_map[0])
+		{
+			while (data->point_map[++i])
+				free(data->point_map[i]);
+		}
+		free(data->point_map);
+	}
+	exit(1);
+}
+
 void	free_mlx(t_data *data)
 {
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
 	if (data->img.mlx_img)
 		mlx_destroy_image(data->mlx, data->img.mlx_img);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 }

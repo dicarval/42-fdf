@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/02 17:28:08 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:18:21 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ static void	ft_set_variables(t_data *data)
 	data->angle_x = DEFAULT_ANG;
 	data->def_angle = DEFAULT_ANG;
 	data->z_adapted = 1;
-	data->range.max_x = 0;
-	data->range.min_x = 0;
-	data->range.max_y = 0;
-	data->range.min_y = 0;
+	data->max_x = 0;
+	data->max_y = 0;
 	data->max_z = 0;
 	data->min_z = 0;
+	data->range_z = 0;
 	data->x_pos = 1;
 	data->y_pos = 1;
 	data->size_grid = 1;
+	data->p_rgb = 0;
+	data->color = 0;
 }
 
 static void	map_config(t_data *data)

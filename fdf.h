@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/02 17:26:14 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:18:30 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,12 @@ typedef struct s_param
 	int	e2;
 }	t_param;
 
-typedef struct s_range
-{
-	int			min_x;
-	int			min_y;
-	int			max_y;
-	int			max_x;
-}	t_range;
-
 typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
 	t_img		img;
 	t_point		**point_map;
-	t_range		range;
 	float		size_grid;
 	int			map_num;
 	int			max_argv;
@@ -80,11 +71,16 @@ typedef struct s_data
 	int			**map_content;
 	int			height;
 	int			width;
+	int			max_y;
+	int			max_x;
 	int			max_z;
 	int			min_z;
+	int			range_z;
 	int			z_adapted;
 	int			x_pos;
 	int			y_pos;
+	int			color;
+	float		p_rgb;
 	double		angle_x;
 	double		angle_y;
 	double		def_angle;
@@ -108,6 +104,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 //Free and close
 void	free_split(char **line, int code, t_data *data);
 int		ft_close_fdf(void *data);
+void	malloc_fail(t_data *data);
 
 
 
