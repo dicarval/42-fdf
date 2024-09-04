@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/03 17:18:21 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:37:40 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	handle_esc_press(int keysym, t_data *data)
 
 static void	ft_set_variables(t_data *data)
 {
-	data->angle_y = DEFAULT_ANG;
-	data->angle_x = DEFAULT_ANG;
 	data->def_angle = DEFAULT_ANG;
 	data->z_adapted = 1;
 	data->max_x = 0;
@@ -33,8 +31,8 @@ static void	ft_set_variables(t_data *data)
 	data->x_pos = 1;
 	data->y_pos = 1;
 	data->size_grid = 1;
-	data->p_rgb = 0;
 	data->color = 0;
+	data->p_rgb = 0;
 }
 
 static void	map_config(t_data *data)

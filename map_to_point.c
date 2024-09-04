@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:49:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/03 17:31:54 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:57:43 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void	limits_finder(t_point point, t_data *data)
 	int	y;
 
 	if (data->range_z > 90)
-		data->z_adapted = 8;
+		data->z_adapted = 9;
 	if (data->range_z > 900)
-		data->z_adapted = 80;
+		data->z_adapted = 90;
 	x = point.x;
 	y = point.y;
 	if (!data->max_x || x > data->max_x)
@@ -47,20 +47,18 @@ void	map_to_point(t_data *data)
 	data->point_map = malloc(sizeof(t_point *) * data->height);
 	if (!data->point_map)
 		malloc_fail(data);
-	y = 0;
-	while (data->map_content[y])
+	y = -1;
+	while (data->map_content[++y])
 	{
-		x = 0;
+		x = -1;
 		data->point_map[y] = malloc(sizeof(t_point) * data->width);
 		if (!data->point_map[y])
 			malloc_fail(data);
-		while (x < data->width)
+		while (++x < data->width)
 		{
 			data->point_map[y][x] = init_point(y, x, data->map_content[y][x]);
 			limits_finder(data->point_map[y][x], data);
-			x++;
 		}
-		y++;
 	}
 	range_to_zoom(data);
 }
