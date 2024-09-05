@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/04 14:28:23 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:47:00 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "./mlibx/mlx.h"
 
 # define W_WIDTH 1920
-# define W_HEIGHT 1000
+# define W_HEIGHT 980
 # define MLX_ERROR 1
 # define DEFAULT_ANG 0.523599
 

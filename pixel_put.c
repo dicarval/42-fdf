@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:50:02 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/04 16:14:44 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:07:48 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	color(t_data *data, int z)
 	z *= data->z_adapted;
 	if (data->min_z < 0)
 		z -= data->min_z;
-	data->p_rgb =  (float)z / (float)data->range_z;
+	data->p_rgb = (float)z / (float)data->range_z;
 	if (data->p_rgb <= 1 && data->p_rgb >= 0.9 )
 		data->color = 0x00FF0000;
 	else if (data->p_rgb < 0.9 && data->p_rgb >= 0.8 )

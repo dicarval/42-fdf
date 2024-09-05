@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/04 11:37:40 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:59:01 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_set_variables(t_data *data)
 	data->x_pos = 1;
 	data->y_pos = 1;
 	data->size_grid = 1;
-	data->color = 0;
+	data->color = 0x000000FF;
 	data->p_rgb = 0;
 }
 

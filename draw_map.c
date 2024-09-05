@@ -6,24 +6,17 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:43:52 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/04 18:16:38 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:05:32 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	zoom_adjust(t_data *data, int y, int x)
+void	clean_image (t_data *data)
 {
 	int	i;
 	int	j;
-	t_point temp;
-	t_point temp00;
 
-	temp = projection((data->point_map)[y - 1][x - 1], data);
-	temp00 = projection((data->point_map)[0][0], data);
-	if ((temp.x > W_WIDTH || temp.y > W_HEIGHT) \
-		|| ((temp.y - temp00.y) < (W_HEIGHT / 2)))
-	{
 		i = -1;
 		while (++i <= W_WIDTH)
 		{
@@ -31,10 +24,27 @@ int	zoom_adjust(t_data *data, int y, int x)
 			while (++j <= W_HEIGHT)
 				my_mlx_pixel_put(data, i, j, 0x00000000);
 		}
-		if (temp.x > W_WIDTH || temp.y > W_HEIGHT)
-			data->size_grid /= 1.4;
-		else
+}
+int	zoom_adjust(t_point tempxy, int y, t_data *data)
+{
+	t_point temp00;
+	t_point temp0y;
+
+	temp00 = projection((data->point_map)[0][0], data);
+	temp0y = projection((data->point_map)[y - 1][0], data);
+	if (tempxy.x > W_WIDTH || tempxy.y > W_HEIGHT \
+		|| ((tempxy.y - temp00.y) < (W_HEIGHT / 2)) \
+		|| temp00.y < 0 || temp0y.x < 0)
+	{
+		clean_image(data);
+		if (temp00.y < 0)
+			data->y_pos = abs(data->y_pos) + abs(data->y_pos)/9;
+		else if (temp0y.x < 0)
+			data->x_pos = abs(data->x_pos) + abs(data->x_pos)/9;
+		else if((tempxy.y - temp00.y) < (W_HEIGHT / 2))
 			data->size_grid *= 1.5;
+		else if (tempxy.x > W_WIDTH || tempxy.y > W_HEIGHT)
+			data->size_grid /= 1.4;
 		return (1);
 	}
 	return (0);
@@ -54,7 +64,7 @@ static void	iso(int *x, int *y, int z, double teta)
 t_point	projection(t_point p, t_data *data)
 {
 
-	p.z = p.z / data->z_adapted;
+	p.z /= data->z_adapted;
 	p.y *= data->size_grid;
 	p.x *= data->size_grid;
 	iso(&p.x, &p.y, p.z, data->def_angle);
@@ -82,7 +92,13 @@ void	draw_image_to_grid(t_data *data)
 				projection((data->point_map)[y + 1][x], data));
 		}
 	}
-	if ((zoom_adjust(data, y, x)) == 1)
+	ft_printf("00x:%d 00y:%d\n", projection((data->point_map)[0][0], data).x, projection((data->point_map)[0][0], data).y);
+	ft_printf("x0:%d\n", projection((data->point_map)[y - 1][0], data).x);
+	ft_printf("y0:%d\n", projection((data->point_map)[0][x - 1], data).y);
+	ft_printf("x:%d\n", projection((data->point_map)[y - 1][x - 1], data).x);
+	ft_printf("y:%d\n", projection((data->point_map)[y - 1][x - 1], data).y);
+	if (zoom_adjust(projection((data->point_map)[y - 1][x - 1], data), y, data) \
+		== 1)
 	{
 		draw_image_to_grid(data);
 		return ;
