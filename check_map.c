@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/03 16:41:45 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:06:06 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static int	digit_check(t_data *data, char *line)
 		i = 0;
 		while (temp[line_len][i] && temp[line_len][i] != '\n')
 		{
+			if (temp[line_len][i] == ',')
+				break ;
 			if (temp[line_len][i] == '-' && i == 0)
 				i++;
 			if (!ft_isdigit(temp[line_len][i]))

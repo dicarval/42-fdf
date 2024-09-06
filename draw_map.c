@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:43:52 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/05 17:05:32 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/06 14:54:09 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,6 @@ void	draw_image_to_grid(t_data *data)
 				projection((data->point_map)[y + 1][x], data));
 		}
 	}
-	ft_printf("00x:%d 00y:%d\n", projection((data->point_map)[0][0], data).x, projection((data->point_map)[0][0], data).y);
-	ft_printf("x0:%d\n", projection((data->point_map)[y - 1][0], data).x);
-	ft_printf("y0:%d\n", projection((data->point_map)[0][x - 1], data).y);
-	ft_printf("x:%d\n", projection((data->point_map)[y - 1][x - 1], data).x);
-	ft_printf("y:%d\n", projection((data->point_map)[y - 1][x - 1], data).y);
 	if (zoom_adjust(projection((data->point_map)[y - 1][x - 1], data), y, data) \
 		== 1)
 	{
