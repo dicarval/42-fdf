@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:20:35 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/04 15:24:59 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:45:50 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	ft_max_min_z(t_data *data, int nb)
 {
 	if (!data->max_z || nb > data->max_z)
-		data-> max_z = nb;
+		data->max_z = nb;
 	if (!data->min_z || nb < data->min_z)
-		data-> min_z = nb;
+		data->min_z = nb;
 	if (data->range_z < data->max_z - data->min_z)
-			data->range_z = data->max_z - data->min_z;
+		data->range_z = data->max_z - data->min_z;
 }
 
 static int	*split_atoi(t_data *data, char *line)
@@ -32,7 +32,7 @@ static int	*split_atoi(t_data *data, char *line)
 	split_chars = ft_split(line, ' ');
 	int_array = malloc(sizeof(int) * data->width);
 	if (!int_array)
-			malloc_fail(data);
+		malloc_fail(data);
 	while (i < data->width)
 	{
 		int_array[i] = ft_atoi(split_chars[i]);

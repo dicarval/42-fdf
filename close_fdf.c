@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:53:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/03 12:24:26 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:38:25 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_close_fdf(void *data)
 
 void	free_split(char **charct, int code, t_data *data)
 {
-	int i;
+	int	i;
 
 	if (code == 1)
 	{

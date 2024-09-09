@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 16:49:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/04 15:57:43 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:44:38 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_point	init_point(int y, int x, int z)
 {
-	t_point point;
+	t_point	point;
 
 	point.y = y;
 	point.x = x;

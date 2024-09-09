@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/06 14:06:06 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:52:09 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,10 @@ static int	check_digits_map(int fd, t_data *data)
 	line = get_next_line(fd);
 	check_empty_map(data, line);
 	line_len = digit_check(data, line);
-	free(line);
-	while ((line = get_next_line(fd)))
+	while (line)
 	{
+		free(line);
+		line = get_next_line(fd);
 		line_len2 = digit_check(data, line);
 		if (line_len != line_len2)
 		{
@@ -89,11 +90,10 @@ static int	check_digits_map(int fd, t_data *data)
 			perror("The map isn't a square or a rectangule\n");
 			exit(0);
 		}
-		free(line);
 	}
 	free(line);
 	data->width = line_len;
-	return(1);
+	return (1);
 }
 
 int	check_map(t_data *data)

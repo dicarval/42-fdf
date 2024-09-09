@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/05 16:47:00 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:46:12 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,5 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	free_split(char **line, int code, t_data *data);
 int		ft_close_fdf(void *data);
 void	malloc_fail(t_data *data);
-
-
 
 #endif

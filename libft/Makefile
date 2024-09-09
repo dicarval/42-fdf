@@ -6,7 +6,7 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/29 17:05:29 by dicarval          #+#    #+#              #
-#    Updated: 2024/08/26 17:32:40 by dicarval         ###   ########.fr        #
+#    Updated: 2024/09/09 12:09:28 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		get_next_line_utils.c
 
 OBJS	= ${SRCS:.c=.o}
-RM		= @rm -f
+RM		= rm -f
 LIBC	= ar -rcs
 CC		= cc
 FLAGS	= -Wall -Wextra -Werror

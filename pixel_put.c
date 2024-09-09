@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:50:02 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/05 17:07:48 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:41:11 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ static int	color(t_data *data, int z)
 	if (data->min_z < 0)
 		z -= data->min_z;
 	data->p_rgb = (float)z / (float)data->range_z;
-	if (data->p_rgb <= 1 && data->p_rgb >= 0.9 )
+	if (data->p_rgb <= 1 && data->p_rgb >= 0.9)
 		data->color = 0x00FF0000;
-	else if (data->p_rgb < 0.9 && data->p_rgb >= 0.8 )
+	else if (data->p_rgb < 0.9 && data->p_rgb >= 0.8)
 		data->color = 0x00FF5500;
-	else if (data->p_rgb < 0.8 && data->p_rgb >= 0.6 )
+	else if (data->p_rgb < 0.8 && data->p_rgb >= 0.6)
 		data->color = 0x00FFAA00;
-	else if (data->p_rgb < 0.6 && data->p_rgb >= 0.4 )
+	else if (data->p_rgb < 0.6 && data->p_rgb >= 0.4)
 		data->color = 0x00FFFF00;
-	else if (data->p_rgb < 0.4 && data->p_rgb >= 0.2 )
+	else if (data->p_rgb < 0.4 && data->p_rgb >= 0.2)
 		data->color = 0x00AAFF00;
-	else if (data->p_rgb < 0.2 && data->p_rgb >= 0.1 )
+	else if (data->p_rgb < 0.2 && data->p_rgb >= 0.1)
 		data->color = 0x0055FF00;
-	else if (data->p_rgb < 0.1 && data->p_rgb >= 0.05 )
+	else if (data->p_rgb < 0.1 && data->p_rgb >= 0.05)
 		data->color = 0x0000FF00;
-	else if (data->p_rgb < 0.05 && data->p_rgb >= 0.02 )
+	else if (data->p_rgb < 0.05 && data->p_rgb >= 0.02)
 		data->color = 0x0000AA55;
-	else if (data->p_rgb < 0.02 && data->p_rgb >= 0.01 )
+	else if (data->p_rgb < 0.02 && data->p_rgb >= 0.01)
 		data->color = 0x000055AA;
 	else if (data->p_rgb < 0.01 && data->p_rgb >= 0)
 		data->color = 0x000000FF;

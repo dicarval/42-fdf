@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 11:28:03 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/05 16:41:36 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:46:03 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	bigger_case(t_data *data)
 void	smaller_case(t_data *data)
 {
 	while ((data->max_x < W_WIDTH / 5 \
-	|| data->max_x < W_HEIGHT /5))
+	|| data->max_x < W_HEIGHT / 5))
 	{
 		data->max_y *= 3;
 		data->max_x *= 3;

@@ -6,7 +6,7 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/29 17:05:29 by dicarval          #+#    #+#              #
-#    Updated: 2024/04/30 14:04:37 by dicarval         ###   ########.fr        #
+#    Updated: 2024/09/09 12:07:17 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,16 @@ FLAGS	= -Wall -Wextra -Werror
 all: ${NAME}
 
 %.o: %.c
-	${CC} ${FLAGS} -c $^ -o $@
+	@${CC} ${FLAGS} -c $^ -o $@
 
 ${NAME}: ${OBJS_PF}
-	${LIBC} ${NAME} ${OBJS_PF}
+	@${LIBC} ${NAME} ${OBJS_PF}
 
 fclean: clean
-	${RM} ${NAME} $(libft)
+	@${RM} ${NAME} $(libft)
 
 clean:
-	${RM} ${OBJS_PF} ${OBJS_LB}
+	@${RM} ${OBJS_PF} ${OBJS_LB}
 
 re: fclean all
 

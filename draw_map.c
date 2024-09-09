@@ -6,44 +6,45 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:43:52 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/06 14:54:09 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:18:49 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	clean_image (t_data *data)
+void	clean_image(t_data *data)
 {
 	int	i;
 	int	j;
 
-		i = -1;
-		while (++i <= W_WIDTH)
-		{
-			j = -1;
-			while (++j <= W_HEIGHT)
-				my_mlx_pixel_put(data, i, j, 0x00000000);
-		}
+	i = -1;
+	while (++i <= W_WIDTH)
+	{
+		j = -1;
+		while (++j <= W_HEIGHT)
+			my_mlx_pixel_put(data, i, j, 0x00000000);
+	}
 }
+
 int	zoom_adjust(t_point tempxy, int y, t_data *data)
 {
-	t_point temp00;
-	t_point temp0y;
+	t_point	temp00;
+	t_point	temp0y;
 
 	temp00 = projection((data->point_map)[0][0], data);
 	temp0y = projection((data->point_map)[y - 1][0], data);
-	if (tempxy.x > W_WIDTH || tempxy.y > W_HEIGHT \
+	if (tempxy.x >= W_WIDTH || tempxy.y >= W_HEIGHT \
 		|| ((tempxy.y - temp00.y) < (W_HEIGHT / 2)) \
 		|| temp00.y < 0 || temp0y.x < 0)
 	{
 		clean_image(data);
 		if (temp00.y < 0)
-			data->y_pos = abs(data->y_pos) + abs(data->y_pos)/9;
+			data->y_pos = abs(data->y_pos) + abs(data->y_pos) / 9;
 		else if (temp0y.x < 0)
-			data->x_pos = abs(data->x_pos) + abs(data->x_pos)/9;
-		else if((tempxy.y - temp00.y) < (W_HEIGHT / 2))
+			data->x_pos = abs(data->x_pos) + abs(data->x_pos) / 9;
+		else if ((tempxy.y - temp00.y) < (W_HEIGHT / 2))
 			data->size_grid *= 1.5;
-		else if (tempxy.x > W_WIDTH || tempxy.y > W_HEIGHT)
+		else if (tempxy.x >= W_WIDTH || tempxy.y >= W_HEIGHT)
 			data->size_grid /= 1.4;
 		return (1);
 	}
@@ -63,7 +64,6 @@ static void	iso(int *x, int *y, int z, double teta)
 
 t_point	projection(t_point p, t_data *data)
 {
-
 	p.z /= data->z_adapted;
 	p.y *= data->size_grid;
 	p.x *= data->size_grid;
