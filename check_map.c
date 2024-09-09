@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/09 11:52:09 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:03:31 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ static int	check_digits_map(int fd, t_data *data)
 	{
 		free(line);
 		line = get_next_line(fd);
-		line_len2 = digit_check(data, line);
+		if (line)
+			line_len2 = digit_check(data, line);
 		if (line_len != line_len2)
 		{
 			free(line);
