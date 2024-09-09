@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:50:02 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/09 11:41:11 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:12:31 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	bresnham(t_data *data, t_point a, t_point b)
 	param = init_param(a, b);
 	while (1)
 	{
-		my_mlx_pixel_put(data, a.x, a.y, color (data, a.z));
+		my_mlx_pixel_put(data, a.x, a.y, color(data, a.z));
 		if (a.x == b.x && a.y == b.y)
 			break ;
 		param.e2 = 2 * param.err;

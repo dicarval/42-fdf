@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:43:52 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/09 13:18:49 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/09 14:59:20 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ int	zoom_adjust(t_point tempxy, int y, t_data *data)
 	return (0);
 }
 
-static void	iso(int *x, int *y, int z, double teta)
+static void	iso(int *x, int *y, int z, double angle)
 {
 	int	previous_x;
 	int	previous_y;
 
 	previous_x = *x;
 	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(teta);
-	*y = (previous_x + previous_y) * sin(teta) - z;
+	*x = (previous_x - previous_y) * cos(angle);
+	*y = (previous_x + previous_y) * sin(angle) - z;
 }
 
 t_point	projection(t_point p, t_data *data)
