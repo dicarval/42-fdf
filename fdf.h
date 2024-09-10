@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/09 11:46:12 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:12:03 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_data
 //Map checking
 int		check_map(t_data *data);
 void	free_split(char **line, int code, t_data *data);
+int		strcmp_fdf(char *map_name);
 
 //Parsing and inicialization
 void	map_loading(t_data *data, int fd, int index);

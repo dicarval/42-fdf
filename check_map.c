@@ -6,30 +6,27 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/09 15:03:31 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:54:20 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	strcmp_fdf(char *map_name)
+void	width_checker(t_data *data, char **temp, int line_len)
 {
-	int		i;
-	int		j;
-	char	*fdf;
+	int	i;
 
-	fdf = ".fdf";
 	i = 0;
-	j = 0;
-	while (map_name[i] != '\0')
-		i++;
-	i -= 4;
-	while (map_name[i] != '\0')
+	while (temp[line_len][i] && temp[line_len][i] != '\n')
 	{
-		if (map_name[i++] != fdf[j++])
-			return (0);
+		if (temp[line_len][i] == ',')
+			break ;
+		if (temp[line_len][i] == '-' && i == 0)
+			i++;
+		if (!ft_isdigit(temp[line_len][i]))
+			free_split(temp, 1, data);
+		i++;
 	}
-	return (1);
 }
 
 static void	check_empty_map(t_data *data, char *line)
@@ -44,7 +41,6 @@ static void	check_empty_map(t_data *data, char *line)
 static int	digit_check(t_data *data, char *line)
 {
 	char	**temp;
-	int		i;
 	int		line_len;
 
 	if (!line)
@@ -53,19 +49,10 @@ static int	digit_check(t_data *data, char *line)
 	line_len = 0;
 	while (temp[line_len])
 	{
-		i = 0;
-		while (temp[line_len][i] && temp[line_len][i] != '\n')
-		{
-			if (temp[line_len][i] == ',')
-				break ;
-			if (temp[line_len][i] == '-' && i == 0)
-				i++;
-			if (!ft_isdigit(temp[line_len][i]))
-				free_split(temp, 1, data);
-			i++;
-		}
+		width_checker(data, temp, line_len);
 		line_len++;
 	}
+	if (temp[line_len - 1][0]
 	free_split(temp, 2, data);
 	return (line_len);
 }

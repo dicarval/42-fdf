@@ -6,7 +6,7 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 15:14:56 by dicarval          #+#    #+#              #
-#    Updated: 2024/09/09 12:19:05 by dicarval         ###   ########.fr        #
+#    Updated: 2024/09/10 15:11:12 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CC =		cc
 CFLAGS =	-g -Wall -Wextra -Werror
 
 SRC =		check_map.c close_fdf.c draw_map.c main.c\
-			map_loading.c map_to_point.c pixel_put.c range_to_screen.c
+			map_loading.c map_to_point.c pixel_put.c range_to_screen.c\
+			check_map_utils.c
 
 OBJ =		$(SRC:.c=.o)
 
