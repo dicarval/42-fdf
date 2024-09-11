@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:34:59 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/05 16:59:01 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/11 11:55:59 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int	main(int argc, char **argv)
 		mlx_loop(data.mlx);
 	}
 	else
-		perror("Number of arguments isn't correct\n");
+		write(2, "The number of arguments isn't correct\n", 38);
 	return (0);
 }

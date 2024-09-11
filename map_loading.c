@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 11:20:35 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/10 16:39:37 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:34:54 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static int	*split_atoi(t_data *data, char *line)
 		free(split_chars[i]);
 		i++;
 	}
+	if (split_chars[i])
+		free(split_chars[i]);
 	free(split_chars);
 	return (int_array);
 }

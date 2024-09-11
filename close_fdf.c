@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:53:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/09 11:38:25 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/11 11:59:13 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	malloc_fail(t_data *data)
 	int	i;
 
 	i = -1;
-	perror("Malloc failed\n");
+	write(2, "Malloc failed\n", 14);
 	if (data->map_content)
 	{
 		if (data->map_content[0])
@@ -37,7 +37,7 @@ void	malloc_fail(t_data *data)
 		}
 		free(data->point_map);
 	}
-	exit(1);
+	ft_close_fdf(data);
 }
 
 void	free_mlx(t_data *data)
@@ -46,8 +46,11 @@ void	free_mlx(t_data *data)
 		mlx_destroy_image(data->mlx, data->img.mlx_img);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
 }
 
 void	free_map(t_data *data)
@@ -81,7 +84,6 @@ void	free_split(char **charct, int code, t_data *data)
 
 	if (code == 1)
 	{
-		perror("The map file has a non-digit character\n");
 		i = 0;
 		while (charct[i])
 			free(charct[i++]);

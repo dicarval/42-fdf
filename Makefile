@@ -6,14 +6,14 @@
 #    By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 15:14:56 by dicarval          #+#    #+#              #
-#    Updated: 2024/09/10 15:11:12 by dicarval         ###   ########.fr        #
+#    Updated: 2024/09/11 11:24:52 by dicarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		fdf
 
 CC =		cc
-CFLAGS =	-g -Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror
 
 SRC =		check_map.c close_fdf.c draw_map.c main.c\
 			map_loading.c map_to_point.c pixel_put.c range_to_screen.c\

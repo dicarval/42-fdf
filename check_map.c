@@ -6,13 +6,13 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/10 16:54:20 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/11 11:55:03 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	width_checker(t_data *data, char **temp, int line_len)
+static void	width_checker(t_data *data, char **temp, int line_len, char *line)
 {
 	int	i;
 
@@ -24,7 +24,11 @@ void	width_checker(t_data *data, char **temp, int line_len)
 		if (temp[line_len][i] == '-' && i == 0)
 			i++;
 		if (!ft_isdigit(temp[line_len][i]))
+		{
+			write(2, "The map file has a non-digit character\n", 39);
+			free(line);
 			free_split(temp, 1, data);
+		}
 		i++;
 	}
 }
@@ -33,7 +37,7 @@ static void	check_empty_map(t_data *data, char *line)
 {
 	if (line == NULL)
 	{
-		perror("The map file is empty\n");
+		write(2, "The map file is empty\n", 22);
 		ft_close_fdf(data);
 	}
 }
@@ -49,10 +53,11 @@ static int	digit_check(t_data *data, char *line)
 	line_len = 0;
 	while (temp[line_len])
 	{
-		width_checker(data, temp, line_len);
+		width_checker(data, temp, line_len, line);
 		line_len++;
 	}
-	if (temp[line_len - 1][0]
+	if (temp[line_len - 1][0] == '\n')
+		line_len--;
 	free_split(temp, 2, data);
 	return (line_len);
 }
@@ -75,8 +80,9 @@ static int	check_digits_map(int fd, t_data *data)
 		if (line_len != line_len2)
 		{
 			free(line);
-			perror("The map isn't a square or a rectangule\n");
-			exit(0);
+			write(2, "Error: The map lines hasn't always the same lenght\n"\
+			 , 51);
+			ft_close_fdf(data);
 		}
 	}
 	free(line);
@@ -90,7 +96,7 @@ int	check_map(t_data *data)
 
 	if (!strcmp_fdf(data->map_file[data->map_num]))
 	{
-		perror("The file is not a .fdf file\n");
+		write(2, "The file is not a .fdf file\n", 28);
 		ft_close_fdf(data);
 	}
 	else
@@ -98,7 +104,7 @@ int	check_map(t_data *data)
 		fd = open(data->map_file[data->map_num], O_RDONLY);
 		if (fd == -1)
 		{
-			perror("No file in the directory or it has no permissions\n");
+			write(2,"No file in the directory or it has no permissions\n", 50);
 			ft_close_fdf(data);
 		}
 		else if (check_digits_map(fd, data))
