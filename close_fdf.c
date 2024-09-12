@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:53:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/11 11:59:13 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:52:27 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	malloc_fail(t_data *data)
 {
 	int	i;
 
+	write(2, "Error: malloc failed\n", 20);
 	i = -1;
-	write(2, "Malloc failed\n", 14);
 	if (data->map_content)
 	{
 		if (data->map_content[0])
@@ -61,11 +61,14 @@ void	free_map(t_data *data)
 	while (data->map_content && data->map_content[i])
 	{
 		free(data->map_content[i]);
-		free(data->point_map[i]);
+		if (data->point_map[i])
+			free(data->point_map[i]);
 		i++;
 	}
-	free(data->map_content);
-	free(data->point_map);
+	if(data->map_content)
+		free(data->map_content);
+	if(data->point_map)
+		free(data->point_map);
 	data->map_content = NULL;
 	data->point_map = NULL;
 }

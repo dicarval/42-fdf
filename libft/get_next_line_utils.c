@@ -5,103 +5,86 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 19:59:54 by dicarval          #+#    #+#             */
-/*   Updated: 2024/08/26 17:36:09 by dicarval         ###   ########.fr       */
+/*   Created: 2024/06/21 10:23:51 by ricmanue          #+#    #+#             */
+/*   Updated: 2024/09/12 13:45:15 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	free_content(t_gnl **lnklist, t_gnl *char_n_used)
-{
-	t_gnl	*tmp;
-	t_gnl	*current;
-
-	if (*lnklist == NULL)
-		return ;
-	current = *lnklist;
-	while (current != NULL)
-	{
-		tmp = current;
-		current = current->next;
-		free(tmp->buf);
-		free(tmp);
-	}
-	*lnklist = NULL;
-	if (char_n_used->buf[0] != '\0')
-		*lnklist = char_n_used;
-	else
-	{
-		free(char_n_used->buf);
-		free(char_n_used);
-	}
-}
-
-size_t	list_len(t_gnl *lnklist)
-{
-	size_t	line_len;
-	int		i;
-
-	line_len = 0;
-	if (lnklist == NULL)
-		return (0);
-	while (lnklist != NULL)
-	{
-		i = 0;
-		while (lnklist->buf[i] != '\0')
-		{
-			if (lnklist->buf[i] == '\n')
-			{
-				return (++line_len);
-			}
-			i++;
-			line_len++;
-		}
-		lnklist = lnklist->next;
-	}
-	return (line_len);
-}
-
-int	end_line(t_gnl *list)
+int	ft_strlen_gnl(char *c)
 {
 	int	i;
 
-	if (list == NULL)
-		return (0);
-	while (list)
+	i = 0;
+	if (c)
 	{
-		i = 0;
-		while (list->buf[i] != '\0')
-		{
-			if (list->buf[i] == '\n')
-				return (1);
+		while (c[i])
 			i++;
-		}
-		list = list->next;
 	}
-	return (0);
+	return (i);
 }
 
-t_gnl	*lstlast(t_gnl *lst)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
-	if (lst == NULL)
+	int		lens1;
+	int		lens2;
+	int		i;
+	int		j;
+	char	*str;
+
+	lens1 = ft_strlen_gnl(s1);
+	lens2 = ft_strlen_gnl(s2);
+	str = (char *)malloc(lens1 + lens2 + 1);
+	if (str == NULL)
 		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	i = -1;
+	j = -1;
+	while (i++ < (lens1 -1))
+		str[i] = s1[i];
+	while (j++ < (lens2 - 1))
+	{
+		str[i] = s2[j];
+		i++;
+	}
+	str[i] = '\0';
+	if (s1)
+		free (s1);
+	return (str);
 }
 
-void	lstadd_back(t_gnl **lst, t_gnl *new)
+int	ft_newline(char *str)
 {
-	t_gnl	*last;
+	int	i;
 
-	if (lst == NULL || new == NULL)
-		return ;
-	if (*lst == NULL)
-		*lst = new;
-	else
+	i = 0;
+	if (!str)
+		return (-1);
+	while (str[i])
 	{
-		last = lstlast(*lst);
-		last->next = new;
+		if (str[i] == '\n')
+			return (i);
+		i++;
 	}
+	return (-1);
+}
+
+void	*ft_cleanread(char *actual_line, char *buffer_content)
+{
+	size_t	i;
+	int		flag;
+
+	i = 0;
+	flag = ft_newline(actual_line);
+	if (flag != -1)
+	{
+		actual_line [flag + 1] = '\0';
+		flag = ft_newline (buffer_content);
+		flag++;
+		while (buffer_content[flag])
+			buffer_content[i++] = buffer_content[flag++];
+	}
+	while (i < BUFFER_SIZE)
+		buffer_content[i++] = '\0';
+	return (actual_line);
 }

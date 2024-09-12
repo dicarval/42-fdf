@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/11 11:55:03 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:40:04 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	width_checker(t_data *data, char **temp, int line_len, char *line)
 			i++;
 		if (!ft_isdigit(temp[line_len][i]))
 		{
-			write(2, "The map file has a non-digit character\n", 39);
 			free(line);
+			write(2, "The map file has a non-digit character\n", 39);
 			free_split(temp, 1, data);
 		}
 		i++;
@@ -58,6 +58,7 @@ static int	digit_check(t_data *data, char *line)
 	}
 	if (temp[line_len - 1][0] == '\n')
 		line_len--;
+	int_checker(data, temp, line, line_len);
 	free_split(temp, 2, data);
 	return (line_len);
 }
@@ -80,7 +81,7 @@ static int	check_digits_map(int fd, t_data *data)
 		if (line_len != line_len2)
 		{
 			free(line);
-			write(2, "Error: The map lines hasn't always the same lenght\n"\
+			write(2, "Error: The map lines hasn't always the same length\n"\
 			 , 51);
 			ft_close_fdf(data);
 		}

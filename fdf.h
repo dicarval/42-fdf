@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/10 15:12:03 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 15:19:11 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <string.h>
+# include <limits.h>
 # include <math.h>
 # include <errno.h>
 # include <X11/X.h>
@@ -68,7 +69,7 @@ typedef struct s_data
 	int			map_num;
 	int			max_argv;
 	char		**map_file;
-	int			**map_content;
+	int		**map_content;
 	int			height;
 	int			width;
 	int			max_y;
@@ -86,6 +87,7 @@ typedef struct s_data
 
 //Map checking
 int		check_map(t_data *data);
+void	int_checker(t_data *data, char **temp, char *line, int line_len);
 void	free_split(char **line, int code, t_data *data);
 int		strcmp_fdf(char *map_name);
 

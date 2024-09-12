@@ -6,13 +6,13 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:01:58 by dicarval          #+#    #+#             */
-/*   Updated: 2024/05/14 10:37:32 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:10:41 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-//size_t, malloc, write
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
@@ -65,7 +65,7 @@ void	ft_putstr_fd(char *s, int fd);
 /*                                 STRING                                     */
 /* ************************************************************************** */
 
-int		ft_atoi(char const *str);
+long	ft_atoi(char const *str);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(char const *str, int c);
