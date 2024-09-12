@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/12 15:19:11 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:12:07 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_data
 	int			map_num;
 	int			max_argv;
 	char		**map_file;
-	int		**map_content;
+	int			**map_content;
 	int			height;
 	int			width;
 	int			max_y;

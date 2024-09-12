@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:53:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/12 14:52:27 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:11:11 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	free_map(t_data *data)
 			free(data->point_map[i]);
 		i++;
 	}
-	if(data->map_content)
+	if (data->map_content)
 		free(data->map_content);
-	if(data->point_map)
+	if (data->point_map)
 		free(data->point_map);
 	data->map_content = NULL;
 	data->point_map = NULL;

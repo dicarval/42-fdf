@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:36:46 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/12 15:40:04 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:11:56 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ static int	check_digits_map(int fd, t_data *data)
 		if (line_len != line_len2)
 		{
 			free(line);
-			write(2, "Error: The map lines hasn't always the same length\n"\
-			 , 51);
+			write(2, "Error: The map lines hasn't always the same length\n" \
+			, 51);
 			ft_close_fdf(data);
 		}
 	}
@@ -105,7 +105,7 @@ int	check_map(t_data *data)
 		fd = open(data->map_file[data->map_num], O_RDONLY);
 		if (fd == -1)
 		{
-			write(2,"No file in the directory or it has no permissions\n", 50);
+			write(2, "No file in the directory or it has no permissions\n", 50);
 			ft_close_fdf(data);
 		}
 		else if (check_digits_map(fd, data))

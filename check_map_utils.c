@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:10:52 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/12 15:38:30 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:10:37 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	strcmp_fdf(char *map_name)
 
 void	int_checker(t_data *data, char **temp, char *line, int line_len)
 {
-	int	i;
-	long *nb;
+	int		i;
+	long	*nb;
 
 	i = 0;
 	nb = malloc(sizeof(long) * line_len);
