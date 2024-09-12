@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 15:25:57 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/12 16:12:07 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:27:49 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@
 # define W_HEIGHT 980
 # define MLX_ERROR 1
 # define DEFAULT_ANG 0.523599
+
+# define RED 0x00FF0000
+# define ORANGE 0x00FF5500
+# define Y_ORANGE 0x00FFAA00
+# define YELLOW 0x00FFFF00
+# define YELLOW_G 0x00AAFF00
+# define Y_GREEN 0x0055FF00
+# define GREEN 0x0000FF00
+# define GREEN_B 0x0000AA55
+# define G_BLUE 0x000055AA
+# define BLUE 0x000000FF
 
 typedef struct s_img
 {

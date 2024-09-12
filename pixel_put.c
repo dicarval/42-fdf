@@ -6,7 +6,7 @@
 /*   By: dicarval <dicarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:50:02 by dicarval          #+#    #+#             */
-/*   Updated: 2024/09/09 14:12:31 by dicarval         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:28:48 by dicarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,25 @@ static int	color(t_data *data, int z)
 		z -= data->min_z;
 	data->p_rgb = (float)z / (float)data->range_z;
 	if (data->p_rgb <= 1 && data->p_rgb >= 0.9)
-		data->color = 0x00FF0000;
+		data->color = RED;
 	else if (data->p_rgb < 0.9 && data->p_rgb >= 0.8)
-		data->color = 0x00FF5500;
+		data->color = ORANGE;
 	else if (data->p_rgb < 0.8 && data->p_rgb >= 0.6)
-		data->color = 0x00FFAA00;
+		data->color = Y_ORANGE;
 	else if (data->p_rgb < 0.6 && data->p_rgb >= 0.4)
-		data->color = 0x00FFFF00;
+		data->color = YELLOW;
 	else if (data->p_rgb < 0.4 && data->p_rgb >= 0.2)
-		data->color = 0x00AAFF00;
+		data->color = YELLOW_G;
 	else if (data->p_rgb < 0.2 && data->p_rgb >= 0.1)
-		data->color = 0x0055FF00;
+		data->color = Y_GREEN;
 	else if (data->p_rgb < 0.1 && data->p_rgb >= 0.05)
-		data->color = 0x0000FF00;
+		data->color = GREEN;
 	else if (data->p_rgb < 0.05 && data->p_rgb >= 0.02)
-		data->color = 0x0000AA55;
+		data->color = GREEN_B;
 	else if (data->p_rgb < 0.02 && data->p_rgb >= 0.01)
-		data->color = 0x000055AA;
+		data->color = G_BLUE;
 	else if (data->p_rgb < 0.01 && data->p_rgb >= 0)
-		data->color = 0x000000FF;
+		data->color = BLUE;
 	return (data->color);
 }
 
