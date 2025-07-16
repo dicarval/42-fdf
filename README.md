@@ -1,7 +1,7 @@
 
 # Creating a Wireframe model
 <p align="center">
-	<img class="center" src="/home/dicarval/Pictures/FDF.png" width=70% height=70%>
+	<img class="center" src="Screenshots/FDF.png" width=70% height=70%>
 </p>
 
 ## Introduction
